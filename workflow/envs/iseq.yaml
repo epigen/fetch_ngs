@@ -1,0 +1,9 @@
+# envs/iseq.yaml
+name: iseq
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - conda-forge::ruby
+  - bioconda::iseq=1.5.0

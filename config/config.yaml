@@ -1,0 +1,19 @@
+
+##### RESOURCES #####
+mem: '32000'
+threads: 2
+
+##### GENERAL #####
+project_name: PublicDataProject # name of the project/dataset
+result_path: results/ # path to the output folder
+
+# define output format of data files as fastq.gz or unmapped/unaligned/raw bam files
+output_format: fastq # options: "bam" or "fastq"
+
+# Supported accession ids (see: https://github.com/BioOmics/iSeq)
+accession_ids:
+    - GSE122139 # BioProject
+    - SAMC017083 # BioSample
+    - ERS5684710 # Sample
+    - CRX020217 # Experiment
+    - SRS2024210 # Run

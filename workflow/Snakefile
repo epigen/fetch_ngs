@@ -1,0 +1,44 @@
+
+# libraries
+import yaml
+import pandas as pd
+import os
+from snakemake.utils import min_version
+
+module_name = "ngs_fetch"
+
+##### set minimum snakemake version #####
+min_version("8.20.1")
+
+##### setup report #####
+# report: os.path.join("report", "workflow.rst")
+    
+# list of names of the used environment specifications in workflow/envs/{env_name}.yaml
+envs = ["iseq","picard","python"]
+
+##### load config and sample annotation sheets #####
+configfile: os.path.join("config","config.yaml")
+
+##### set global variables
+result_path = os.path.join(config["result_path"], module_name)
+output_fmt = config.get("output_format", "fastq").strip().lower()
+
+# list of accession strings
+accession_ids = list(config["accession_ids"])
+
+##### target rules #####
+rule all:
+    input:
+        os.path.join(result_path,"annotation.csv"),
+    resources:
+        mem_mb=config.get("mem", "8000"),
+    threads: config.get("threads", 1)
+    log:
+        os.path.join("logs","rules","all.log")
+
+
+##### load rules #####
+# include: os.path.join("rules", "export.smk")
+# include: os.path.join("rules", "common.smk")
+include: os.path.join("rules", "fetch.smk")
+include: os.path.join("rules", "annotate.smk")
