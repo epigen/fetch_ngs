@@ -5,7 +5,7 @@
 ![GitHub Release](https://img.shields.io/github/v/release/epigen/fetch_ngs)
 [![Snakemake](https://img.shields.io/badge/Snakemake->=8.20.1-green)](https://snakemake.readthedocs.io/en/stable/)
 
-# Retrieval Workflow for Public Sequencing Data Powered by iSeq
+# Retrieval Workflow for Public Sequencing Data Using iSeq
 A [Snakemake 8](https://snakemake.readthedocs.io/en/stable/) workflow for downloading and processing public sequencing data and metadata from **[GSA](https://ngdc.cncb.ac.cn/gsa/)**, **[SRA](https://www.ncbi.nlm.nih.gov/sra/)**, **[ENA](https://www.ebi.ac.uk/ena/)**, and **[DDBJ](https://www.ddbj.nig.ac.jp/)** databases using [iSeq](https://github.com/BioOmics/iSeq).
 
 > [!NOTE]  
