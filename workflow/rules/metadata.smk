@@ -3,7 +3,7 @@
 rule merge_metadata:
     input:
         metadata = expand(os.path.join(result_path, "{accession}", "{accession}.metadata.csv"), accession = accession_ids),
-        bam_confirmation = expand(os.path.join(result_path, ".fastq_to_bam","{accession}.done"), accession = accession_ids) if output_fmt=="bam" else [],
+        bam_confirmation = expand(os.path.join(result_path, ".fastq_to_bam","{accession}.done"), accession = accession_ids) if output_fmt=="bam" and config["metadata_only"]==0 else [],
     output:
         metadata = report(os.path.join(result_path, "metadata.csv"),
                                 caption="../report/metadata.rst",
