@@ -5,6 +5,6 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - picard
-  - python
-  - pandas
+  - picard=2.20.4
+  - python=3.13.2
+  - pandas=2.2.3

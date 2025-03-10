@@ -1,19 +1,20 @@
 
 ##### RESOURCES #####
-mem: '16000'
-threads: 8 # used to parallelize download, FASTQ to gzip conversion and FASTQ to BAM conversion
+mem: '16000' #  memory allocation in MB
+threads: 8 # used to parallelize download and potential FASTQ to gzip conversion
 
 ##### GENERAL #####
 project_name: PublicDataProject # name of the project/dataset
 result_path: results/ # path to the output folder
 
-# Flag to download and merge only the metadata of all accessions
-metadata_only: 0 # options: 0=no; 1=yes
+# flag to download and merge only the metadata of all accessions without sequence files
+metadata_only: 0 # options: 0 (no), 1 (yes)
 
-# define output format of data files as fastq.gz or unmapped/unaligned/raw bam files
+# define output format of sequence files as fastq.gz (fastq) or unmapped/unaligned/raw bam (bam) files
 output_format: bam # options: "bam" or "fastq"
 
-# Supported accession ids to dwnload (see: https://github.com/BioOmics/iSeq)
+# accession IDs from public repositories (GEO, SRA, ENA/EBI, GSA, DDBJ)
+# For a list of supported accession ids see: https://github.com/BioOmics/iSeq
 accession_ids:
     - GSE122139 # BioProject
     - SAMC017083 # BioSample

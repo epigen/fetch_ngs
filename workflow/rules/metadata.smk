@@ -20,7 +20,7 @@ rule merge_metadata:
     resources:
         mem_mb="4000",
     conda:
-        "../envs/python.yaml"
+        "../envs/picard.yaml"
     script:
         "../scripts/merge_metadata.py"
 

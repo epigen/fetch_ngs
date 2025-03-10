@@ -1,8 +1,0 @@
-# envs/python.yaml
-name: python
-channels:
-  - conda-forge
-  - nodefaults
-dependencies:
-  - python
-  - pandas
