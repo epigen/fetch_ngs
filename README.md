@@ -1,12 +1,12 @@
 [![MrBiomics](https://img.shields.io/badge/MrBiomics-red)](https://github.com/epigen/MrBiomics/)
 [![](https://tokei.rs/b1/github/epigen/fetch_ngs?category=code)]() 
 [![](https://tokei.rs/b1/github/epigen/fetch_ngs?category=files)]()
-[![GitHub license](https://img.shields.io/github/license/epigen/fetch_ngs)](https://github.com/epigen/fetch_ngs/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/epigen/fetch_ngs)](https://github.com/epigen/fetch_ngs/blob/main/LICENSE)
 ![GitHub Release](https://img.shields.io/github/v/release/epigen/fetch_ngs)
 [![Snakemake](https://img.shields.io/badge/Snakemake->=8.20.1-green)](https://snakemake.readthedocs.io/en/stable/)
 
-# Retrieval Workflow for Public Sequencing Data Using iSeq
-A [Snakemake 8](https://snakemake.readthedocs.io/en/stable/) workflow for downloading and processing public sequencing data and metadata from **[GSA](https://ngdc.cncb.ac.cn/gsa/)**, **[SRA](https://www.ncbi.nlm.nih.gov/sra/)**, **[ENA](https://www.ebi.ac.uk/ena/)**, and **[DDBJ](https://www.ddbj.nig.ac.jp/)** databases using [iSeq](https://github.com/BioOmics/iSeq).
+# Workflow to Fetch Public Sequencing Data and Metadata Using iSeq
+A [Snakemake 8](https://snakemake.readthedocs.io/en/stable/) workflow to fetch (download) and process public sequencing data and metadata from **[GSA](https://ngdc.cncb.ac.cn/gsa/)**, **[SRA](https://www.ncbi.nlm.nih.gov/sra/)**, **[ENA](https://www.ebi.ac.uk/ena/)**, **[GEO](https://www.ncbi.nlm.nih.gov/geo/)** and **[DDBJ](https://www.ddbj.nig.ac.jp/)** databases using [iSeq](https://github.com/BioOmics/iSeq).
 
 > [!NOTE]  
 > This workflow adheres to the module specifications of [MrBiomics](https://github.com/epigen/MrBiomics), an effort to augment research by modularizing (biomedical) data science. For more details, instructions, and modules check out the project's repository.

@@ -33,6 +33,8 @@ ruleorder: fastq_to_bam>fetch_file>iseq_download
 rule all:
     input:
         os.path.join(result_path,"metadata.csv"),
+    params:
+        metadata_only = config["metadata_only"],
     resources:
         mem_mb=config.get("mem", "4000"),
     threads: 1
