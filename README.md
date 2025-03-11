@@ -1,4 +1,5 @@
 [![MrBiomics](https://img.shields.io/badge/MrBiomics-red)](https://github.com/epigen/MrBiomics/)
+[![DOI](https://zenodo.org/badge/943940069.svg)](https://doi.org/10.5281/zenodo.15005419)
 [![](https://tokei.rs/b1/github/epigen/fetch_ngs?category=code)]() 
 [![](https://tokei.rs/b1/github/epigen/fetch_ngs?category=files)]()
 [![GitHub license](https://img.shields.io/github/license/epigen/fetch_ngs)](https://github.com/epigen/fetch_ngs/blob/main/LICENSE)
@@ -14,7 +15,7 @@ A [Snakemake 8](https://snakemake.readthedocs.io/en/stable/) workflow to fetch (
 > ⭐️ **Star and share modules you find valuable** 📤 - help others discover them, and guide our future work!
 
 > [!IMPORTANT]  
-> **If you use this workflow in a publication, please don't forget to give credit to the authors by citing it using this DOI [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX).**
+> **If you use this workflow in a publication, please don't forget to give credit to the authors by citing it using this DOI [10.5281/zenodo.15005419](https://doi.org/10.5281/zenodo.15005419).**
 
 ![Workflow Rulegraph](./workflow/dags/rulegraph.svg)
 
@@ -39,7 +40,7 @@ This is a template for the Methods section of a scientific publication and is in
 
 __Data Acquisition & Processing.__ Public sequencing data were retrieved from [GSA|SRA|ENA|DDBJ] under the accession(s) [accession_ids] using iSeq (ver) [ref]. The data were downloaded as FASTQ files (and converted to unmapped BAM ([uBAM](https://gatk.broadinstitute.org/hc/en-us/articles/360035532132-uBAM-Unmapped-BAM-Format)) files using Picard FastqToSam (ver) [ref], preserving sample information and read groups while supporting both single-end and paired-end sequencing data).  Metadata for each dataset was collected and merged into a single Comprehensive reference file.
 
-**The data acquisition and processing described here were performed using a publicly available Snakemake (ver) [ref] workflow [ref - cite this workflow here].**
+**The data acquisition and processing described here were performed using a publicly available Snakemake (ver) [ref] workflow [10.5281/zenodo.15005419](https://doi.org/10.5281/zenodo.15005419).**
 
 # 🚀 Features
 The workflow performs the following steps that produce the outlined results:
@@ -90,7 +91,7 @@ Detailed specifications can be found here [./config/README.md](./config/README.m
 # 🔗 Links
 - [GitHub Repository](https://github.com/epigen/fetch_ngs/)
 - [GitHub Page](https://epigen.github.io/fetch_ngs/)
-- [Zenodo Repository (coming soon)]()
+- [Zenodo Repository](https://doi.org/10.5281/zenodo.15005419)
 - [Snakemake Workflow Catalog Entry](https://snakemake.github.io/snakemake-workflow-catalog?usage=epigen/fetch_ngs)
 
 # 📚 Resources
