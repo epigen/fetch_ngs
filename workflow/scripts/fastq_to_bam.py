@@ -31,6 +31,10 @@ for f in fastq_files:
 # build and execute Picard FastqToSam command depending on type
 for sample, fdict in samples.items():
     outbam = os.path.join(acc_dir, f"{sample}.bam")
+    
+    if os.path.exists(outbam):  # Skip if outbam already exists
+        continue
+
     if "r1" in fdict and "r2" in fdict:
         cmd = (
             f"picard FastqToSam FASTQ={fdict['r1']} FASTQ2={fdict['r2']} "
