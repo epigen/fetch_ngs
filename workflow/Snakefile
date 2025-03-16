@@ -37,6 +37,7 @@ wildcard_constraints:
 rule all:
     input:
         aggregated_metadata = os.path.join(result_path,"metadata.csv"),
+        metadata_files = expand(os.path.join(result_path, "{accession}", "{accession}.metadata.csv"), accession=accession_ids),
         success_logs = expand(os.path.join(result_path, "{accession}", "success.log"), accession=accession_ids) if config["metadata_only"]==0 else [],
         # config
         envs = expand(os.path.join(result_path,'envs','{env}.yaml'),env=envs),

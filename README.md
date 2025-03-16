@@ -77,6 +77,7 @@ Here are some tips for the usage of this workflow:
 - Use `metadata_only: 1` for a quick preview of available data before committing to full downloads
 - Choose between `FASTQ` or `BAM` output formats based on your downstream analysis needs
 - For large datasets, consider increasing `threads` and `mem` parameters
+- For super series (e.g., GSE) or projects containing many samples, start by running in `metadata_only: 1` mode to extract run accession IDs. Then use these IDs in the config to enable maximum parallelization, avoiding sequential download and conversion.
 - The merged metadata file can be used as a basis for sample annotation files downstream
 - BAM output format (`output_format: bam`) is recommended for direct integration with BAM compatible downstream analysis workflows
 
