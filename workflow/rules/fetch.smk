@@ -3,7 +3,8 @@
 rule iseq_download:
     output:
         acc_dir = directory(os.path.join(result_path, "{accession}")),
-        metadata = os.path.join(result_path, "{accession}", "{accession}.metadata.csv")
+        metadata = os.path.join(result_path, "{accession}", "{accession}.metadata.csv"),
+        success_log = os.path.join(result_path, "{accession}", "success.log") if config["metadata_only"]==0 else [],
     params:
         accession = lambda wc: "{}".format(wc.accession),
         metadata_only = "-m" if config["metadata_only"]==1 else "",
@@ -48,13 +49,13 @@ rule fastq_to_bam:
         "../scripts/fastq_to_bam.py"
 
 # phantom/shadow rule to enable downstream processing
-# requires to know that the file will exist in that exact location, otherwise error
+# requires to know that the file will exist in that exact location, otherwise MissingInputException error
 rule fetch_file:
     input:
         metadata = os.path.join(result_path, "{accession}", "{accession}.metadata.csv"),
         bam_confirmation = os.path.join(result_path, ".fastq_to_bam","{accession}.done") if output_fmt=="bam" else [],
     output:
-        seqfile = update(os.path.join(result_path,"{accession}","{sample}.{suffix}")),
+        seqfile = update(os.path.join(result_path,"{accession}",r"{sample}.{suffix,(bam|fastq\.gz)}")),
     params:
         acc_dir = lambda wc: os.path.join(result_path, "{}".format(wc.accession)),    
     resources:

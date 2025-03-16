@@ -6,4 +6,4 @@ channels:
   - nodefaults
 dependencies:
   - conda-forge::ruby=3.4.2
-  - bioconda::iseq=1.5.0
+  - bioconda::iseq=1.7.0

@@ -27,14 +27,17 @@ output_fmt = config.get("output_format", "fastq").strip().lower()
 # list of accession strings
 accession_ids = list(config["accession_ids"])
 
-ruleorder: fastq_to_bam>fetch_file>iseq_download
+# global wildcard constrain to make ruleorder direcive obsolete
+wildcard_constraints:
+    accession="[A-Z]{3,5}[0-9]+"
+
+# ruleorder: fastq_to_bam>fetch_file>iseq_download
 
 ##### target rules #####
 rule all:
     input:
-        os.path.join(result_path,"metadata.csv"),
-    params:
-        metadata_only = config["metadata_only"],
+        aggregated_metadata = os.path.join(result_path,"metadata.csv"),
+        success_logs = expand(os.path.join(result_path, "{accession}", "success.log"), accession=accession_ids) if config["metadata_only"]==0 else [],
     resources:
         mem_mb=config.get("mem", "4000"),
     threads: 1
