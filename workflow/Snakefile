@@ -15,7 +15,7 @@ min_version("8.20.1")
 report: os.path.join("report", "workflow.rst")
     
 # list of names of the used environment specifications in workflow/envs/{env_name}.yaml
-envs = ["iseq","picard","python"]
+envs = ["iseq","picard"]
 
 ##### load config #####
 configfile: os.path.join("config","config.yaml")
@@ -38,6 +38,9 @@ rule all:
     input:
         aggregated_metadata = os.path.join(result_path,"metadata.csv"),
         success_logs = expand(os.path.join(result_path, "{accession}", "success.log"), accession=accession_ids) if config["metadata_only"]==0 else [],
+        # config
+        envs = expand(os.path.join(result_path,'envs','{env}.yaml'),env=envs),
+        configs = os.path.join(result_path,'configs','{}_config.yaml'.format(config["project_name"])),
     resources:
         mem_mb=config.get("mem", "4000"),
     threads: 1
@@ -46,6 +49,6 @@ rule all:
 
 
 ##### load rules #####
-# include: os.path.join("rules", "export.smk")
+include: os.path.join("rules", "export.smk")
 include: os.path.join("rules", "fetch.smk")
 include: os.path.join("rules", "metadata.smk")
