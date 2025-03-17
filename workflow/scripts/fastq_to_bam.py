@@ -28,11 +28,14 @@ for f in fastq_files:
     else:
         samples[sample]["se"] = f
 
+bam_files = []  # list to track processed .bam files
+
 # build and execute Picard FastqToSam command depending on type
 for sample, fdict in samples.items():
     outbam = os.path.join(acc_dir, f"{sample}.bam")
     
     if os.path.exists(outbam):  # Skip if outbam already exists
+        bam_files.append(outbam)
         continue
 
     if "r1" in fdict and "r2" in fdict:
@@ -47,8 +50,14 @@ for sample, fdict in samples.items():
         )
     else:
         continue
-    subprocess.run(cmd, shell=True, check=True)
 
-# log success
-with open(marker_file, "w") as f:
-    f.write("done\n")
+    subprocess.run(cmd, shell=True, check=True)
+    bam_files.append(outbam)  # log the newly created .bam
+
+# log created bam files as success
+if len(bam_files)>0:
+    with open(marker_file, "w") as f:
+        for bam in bam_files:
+            f.write(f"{bam}\n")
+else:
+    print(f"Error: No uBAM samples created or found in {acc_dir}.")

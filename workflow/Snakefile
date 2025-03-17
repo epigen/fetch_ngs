@@ -33,6 +33,7 @@ wildcard_constraints:
 
 # ruleorder: fastq_to_bam>fetch_file>iseq_download
 
+
 ##### target rules #####
 rule all:
     input:

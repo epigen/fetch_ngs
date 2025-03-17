@@ -1,7 +1,7 @@
 
 ##### RESOURCES #####
-mem: '16000' #  memory allocation in MB
-threads: 8 # used to parallelize download and potential FASTQ to gzip conversion
+mem: '8000' #  memory allocation in MB
+threads: 4 # used to parallelize download and potential FASTQ to gzip conversion
 
 ##### GENERAL #####
 project_name: PublicDataProject # name of the project/dataset

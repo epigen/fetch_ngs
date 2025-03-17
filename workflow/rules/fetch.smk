@@ -10,6 +10,7 @@ rule iseq_download:
         metadata_only = "-m" if config["metadata_only"]==1 else "",
     resources:
         mem_mb=config.get("mem", "16000"),
+        parallel_downloads=1, # https://stackoverflow.com/questions/51977436/restrict-number-of-jobs-by-a-rule-in-snakemake
     threads: config.get("threads", 4)
     conda:
         "../envs/iseq.yaml"
