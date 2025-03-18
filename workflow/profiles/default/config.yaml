@@ -1,3 +1,5 @@
 default-resources:
     slurm_partition: shortq
     slurm_extra: "'--qos=shortq'"
+resources:
+    parallel_downloads: 3

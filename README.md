@@ -73,7 +73,7 @@ The workflow produces the following directory structure:
 
 # 🛠️ Usage
 Here are some tips for the usage of this workflow:
-- Run your workflow with `snakemake --resources parallel_downloads=3` to restrict concurrent download jobs to three (worked well for me), thereby reducing the risk of triggering IP blacklisting from excessive parallel FTP connections.
+- Run your workflow with `snakemake --resources parallel_downloads=3` to restrict concurrent download jobs to three (worked well for me), thereby reducing the risk of triggering IP blacklisting from excessive parallel FTP connections. This can also be achieved by using the workflow's [profile](./workflow/profiles/default/config.yaml). In case of usage as module, put the parameter into the parent workflow's profile.
 - Specify accession IDs in the configuration file as a list to download multiple datasets in one run
 - Use `metadata_only: 1` for a quick preview of available data before committing to full downloads
 - Choose between `FASTQ` or `BAM` output formats based on your downstream analysis needs

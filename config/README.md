@@ -2,7 +2,7 @@ You only need one configuration file to run the complete workflow. You can use t
 
 **configuration (`config/config.yaml`):** Different for every project/dataset and configures the datasets to be fetched and how they should be processed. The fields are described within the file.
 
-Set workflow-specific `resources` or command line arguments (CLI) in the workflow profile `workflow/profiles/default.config.yaml`, which supersedes global Snakemake profiles.
+Set workflow-specific `resources` or command line arguments (CLI) in the workflow profile `workflow/profiles/default/config.yaml`, which supersedes global Snakemake profiles.
 
 
 ## Example Configurations
