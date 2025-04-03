@@ -2,11 +2,12 @@
 # download metadata and fastq.gz files (optional) for each accession
 rule iseq_download:
     output:
-        acc_dir = directory(os.path.join(result_path, "{accession}")),
+        #acc_dir = directory(os.path.join(result_path, "{accession}")),
         metadata = os.path.join(result_path, "{accession}", "{accession}.metadata.csv"),
         success_log = os.path.join(result_path, "{accession}", "success.log") if config["metadata_only"]==0 else [],
     params:
         accession = lambda wc: "{}".format(wc.accession),
+        acc_dir = lambda wc: os.path.join(result_path, "{}".format(wc.accession)),    
         metadata_only = "-m" if config["metadata_only"]==1 else "",
     resources:
         mem_mb=config.get("mem", "16000"),
@@ -16,9 +17,9 @@ rule iseq_download:
         "../envs/iseq.yaml"
     shell:
         """
-        iseq -i {params.accession} -o {output.acc_dir} -g -t {threads} -p {threads} {params.metadata_only}
+        iseq -i {params.accession} -o {params.acc_dir} -g -t {threads} -p {threads} {params.metadata_only}
         # if only a TSV metadata file is generated, convert it to CSV using sed (replace tabs with commas)
-        if [ -f {output.acc_dir}/{params.accession}.metadata.tsv ]; then \
+        if [ -f {params.acc_dir}/{params.accession}.metadata.tsv ]; then \
             awk 'BEGIN {{ FS="\\t"; OFS="," }} {{
               rebuilt=0
               for(i=1;i<=NF;++i) {{
@@ -30,7 +31,7 @@ rule iseq_download:
               }}
               if (!rebuilt) {{ $1=$1 }}
               print
-            }}' {output.acc_dir}/{params.accession}.metadata.tsv > {output.acc_dir}/{params.accession}.metadata.csv; \
+            }}' {params.acc_dir}/{params.accession}.metadata.tsv > {params.acc_dir}/{params.accession}.metadata.csv; \
         fi
         """
 
